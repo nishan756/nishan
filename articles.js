@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/app/articles/";
+const API_URL = "nishan-backend-hc51.onrender.com";
 const container = document.getElementById("articlesContainer");
 const loading = document.getElementById("loading");
 
