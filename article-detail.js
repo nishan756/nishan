@@ -1,4 +1,4 @@
-const API_BASE = "https://nishan-backend-hc51.onrender.com/app/articles/{id}";
+const API_BASE = "https://nishan-backend-hc51.onrender.com/app/articles/";
 
         const container = document.getElementById("articleContainer");
         const loading = document.getElementById("loading");
