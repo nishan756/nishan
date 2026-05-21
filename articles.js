@@ -25,7 +25,7 @@ async function loadArticles() {
                     ${article.short_description.slice(0, 120)}...
                 </div>
 
-                <a class="read" href="article-detail.html?id=${article.id}">
+                <a class="read" href="article-detail.html?id=${article.id}/">
                     read more →
                 </a>
             `;
