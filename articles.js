@@ -8,12 +8,12 @@ async function loadArticles() {
 
         if (!res.ok) throw new Error("API error");
 
-        const data = await res.json();
+        const articles = await res.json();
 
         loading.style.display = "none";
         container.innerHTML = "";
 
-        data.forEach(article => {
+        articles.forEach(article => {
 
             const card = document.createElement("div");
             card.className = "card item-card";
