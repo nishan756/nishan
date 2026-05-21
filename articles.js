@@ -22,7 +22,7 @@ async function loadArticles() {
                 <div class="title">${article.title}</div>
 
                 <div class="blurb">
-                    ${article.content.slice(0, 120)}...
+                    ${article.short_description.slice(0, 120)}...
                 </div>
 
                 <a class="read" href="article.html?id=${article.id}">
