@@ -1,4 +1,4 @@
-const API_URL = "nishan-backend-hc51.onrender.com";
+const API_URL = "nishan-backend-hc51.onrender.com/app/articles/";
 const container = document.getElementById("articlesContainer");
 const loading = document.getElementById("loading");
 
