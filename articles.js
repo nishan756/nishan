@@ -1,47 +1,42 @@
-// Backend API URL
-const API_URL = "http://127.0.0.1:8000/api/articles/";
+const API_URL = "http://127.0.0.1:8000/app/articles/";
+const container = document.getElementById("articlesContainer");
+const loading = document.getElementById("loading");
 
-// DOM Element
-const articleContainer = document.getElementById("articles");
-
-// Fetch Articles
-async function fetchArticles() {
+async function loadArticles() {
     try {
-        const response = await fetch(API_URL);
+        const res = await fetch(API_URL);
 
-        // Response check
-        if (!response.ok) {
-            throw new Error("Failed to fetch articles");
-        }
+        if (!res.ok) throw new Error("API error");
 
-        // Convert response to JSON
-        const articles = await response.json();
+        const data = await res.json();
 
-        // Clear previous content
-        articleContainer.innerHTML = "";
+        loading.style.display = "none";
+        container.innerHTML = "";
 
-        // Loop through articles
-        articles.forEach(article => {
-            const articleCard = document.createElement("div");
-            articleCard.classList.add("article-card");
+        data.forEach(article => {
 
-            articleCard.innerHTML = `
-                <h2>${article.title}</h2>
-                <p>${article.content}</p>
-                <small>Author: ${article.author}</small>
+            const card = document.createElement("div");
+            card.className = "card item-card";
+
+            card.innerHTML = `
+                <div class="title">${article.title}</div>
+
+                <div class="blurb">
+                    ${article.content.slice(0, 120)}...
+                </div>
+
+                <a class="read" href="article.html?id=${article.id}">
+                    read more →
+                </a>
             `;
 
-            articleContainer.appendChild(articleCard);
+            container.appendChild(card);
         });
 
-    } catch (error) {
-        console.error("Error:", error);
-
-        articleContainer.innerHTML = `
-            <p>Failed to load articles.</p>
-        `;
+    } catch (err) {
+        console.error(err);
+        loading.innerText = "Failed to load articles.";
     }
 }
 
-// Call function
-fetchArticles();
+loadArticles();
